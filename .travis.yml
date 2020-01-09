@@ -5,7 +5,14 @@ language: java
 install: true
 jdk:
   - oraclejdk11
+addons:
+  sonarcloud:
+    organization: isilona-github
+    token:
+      secure: C+kMpeQTW6ABQg9T1SinW1i7YwkcJTG7V59W2BmbxFWiZPcH2djwhsp1Tzi6DMsdDvAzE0+TJR6r/kRH4on4JABXyzu9IDz/Wn3vYw61Q41ls7Ne4014B9VuGeDoCDzyfq8A06biaGg3TbIX9J3ipfmVWoGuzHE7aSnJmaZP44qv11036KV+/FTqB75MI6bDv75Qi0d3ycePKrikp5YCYMY8d+V0hANy1DuWokfEQLW/ez5V8F0Es076UveSlWhnKENNe6P9ARWRaVkBCs70e9RG+7NtbWRiiJqsZxQpyDjkF+X/mEeRfFjZ7TjyErvR8zdm/hQkZr3EdaFEU839YdVKmG5LbcMmkVFoQCJyV/7qjDtcGKdDVCDQiIuJEe6rMqsbAVzJRgJhftH3IAsjR6NFLRDOt8CDfhSwQl/REHTRFL2HiHmxdGZcmJU/Iv6ZVjWfu/s+NfKI5jN3Pp4BESay+idA5GFiue2JSw6mcBrPs+QYoNbuDnWFGAUKpDbeWSY5Ikr5tRzQuhz3UCV86D8YY0lVy3HJbRdB/mi1d6O3cK3KUdgjzaWYqtRjTA5fXtkcmj+2q0EhOqUrPurAu0TxCAvjMu1KvU6+Wn5oPBkFmlTVy8GiZ67XESOKxDFU7/caDwQx6Wl55msCRgrQE3AusiRvajwQ8sN2nzfRFCo=
+
 script:
-  - mvn clean install
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=isilona_hr-management-system
 after_success:
   - sh deploy_heroku.sh
