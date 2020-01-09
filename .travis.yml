@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+language: java
+install: true
+jdk:
+  - oraclejdk11
+script:
+  - mvn clean install
+after_success:
+  - sh deploy_heroku.sh
