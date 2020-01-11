@@ -15,4 +15,5 @@ script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=isilona_hr-management-system
 after_success:
-  - sh deploy_heroku.sh
+  - sh .travis/deploy_dockerhub.sh
+  - sh .travis/deploy_heroku.sh

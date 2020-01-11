@@ -36,6 +36,6 @@ public class UserController {
 
         return ResponseEntity
                 .ok()
-                .body("HELLO");
+                .body("HELLO v2");
     }
 }
