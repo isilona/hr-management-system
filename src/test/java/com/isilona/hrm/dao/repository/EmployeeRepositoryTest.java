@@ -62,7 +62,6 @@ class EmployeeRepositoryTest {
         assertThat(savedEmployee.getId()).isNotNull();
         assertThat(savedEmployee.getUuid()).isNotNull();
         assertThat(savedEmployee.getCreatedAt()).isNotNull();
-        assertThat(savedEmployee.getDeletedAt()).isNull();
         assertThat(savedEmployee.getUpdatedAt()).isNull();
         assertThat(savedEmployee.getVersion()).isEqualTo(0);
 
@@ -115,7 +114,6 @@ class EmployeeRepositoryTest {
         assertThat(savedEmployee.getAddress().getId()).isNotNull();
         assertThat(savedEmployee.getAddress().getUuid()).isNotNull();
         assertThat(savedEmployee.getAddress().getCreatedAt()).isNotNull();
-        assertThat(savedEmployee.getAddress().getDeletedAt()).isNull();
         assertThat(savedEmployee.getAddress().getUpdatedAt()).isNull();
         assertThat(savedEmployee.getAddress().getVersion()).isEqualTo(0);
 
