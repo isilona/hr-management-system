@@ -22,7 +22,7 @@
         <org.postgresql.version>42.2.9</org.postgresql.version>
         <com.h2database.version>1.4.200</com.h2database.version>
         <com.querydsl.version>4.2.2</com.querydsl.version>
-
+        <io.springfox-swagger2.version>2.9.2</io.springfox-swagger2.version>
     </properties>
 
     <dependencies>
@@ -82,6 +82,35 @@
             <artifactId>querydsl-core</artifactId>
             <version>${com.querydsl.version}</version>
         </dependency>
+
+
+
+        <!-- swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${io.springfox-swagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${io.springfox-swagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+            <version>${io.springfox-swagger2.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-jre</version>
+        </dependency>
+
 
 
         <dependency>
