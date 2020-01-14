@@ -5,16 +5,21 @@ import com.isilona.hrm.dao.repository.BaseRepository;
 import com.isilona.hrm.dto.BaseDto;
 import com.isilona.hrm.exception.ResourceNotFoundException;
 import com.isilona.hrm.mapping.BaseMapper;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.EntityPathBase;
 import lombok.Getter;
+import org.springframework.data.domain.Sort;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Getter
-public abstract class AbstractBaseService<R extends BaseRepository<E>, M extends BaseMapper<D, E>, E extends AbstractBaseEntity, D extends BaseDto> {
+public abstract class AbstractBaseService<R extends BaseRepository<E, Q>, M extends BaseMapper<D, E>, E extends AbstractBaseEntity, Q extends EntityPathBase<E>, D extends BaseDto> {
 
     private R repository;
     private M mapper;
@@ -54,5 +59,13 @@ public abstract class AbstractBaseService<R extends BaseRepository<E>, M extends
             throw new ResourceNotFoundException(uuid);
         }
         return deletedRows;
+    }
+
+    public List<D> findFiltered(Predicate predicate, Sort sort) {
+        final BooleanBuilder builder = new BooleanBuilder();
+
+        return StreamSupport.stream(getRepository().findAll(builder.and(predicate), sort).spliterator(), false)
+                .map(entity -> mapper.entityToDto(entity))
+                .collect(Collectors.toList());
     }
 }

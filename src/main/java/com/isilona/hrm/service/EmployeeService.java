@@ -1,6 +1,7 @@
 package com.isilona.hrm.service;
 
 import com.isilona.hrm.dao.entity.Employee;
+import com.isilona.hrm.dao.entity.QEmployee;
 import com.isilona.hrm.dao.repository.EmployeeRepository;
 import com.isilona.hrm.dto.EmployeeDto;
 import com.isilona.hrm.exception.ResourceNotFoundException;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import static java.util.Objects.isNull;
 
 @Service
-public class EmployeeService extends AbstractBaseService<EmployeeRepository, EmployeeMapper, Employee, EmployeeDto> {
+public class EmployeeService extends AbstractBaseService<EmployeeRepository, EmployeeMapper, Employee, QEmployee, EmployeeDto> {
 
     public EmployeeService(EmployeeRepository repository, EmployeeMapper mapper) {
         super(repository, mapper);
