@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="fragments/head"></th:block>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Employee Details</h1>
+
+
+            <table class="table table-hover table-borderless">
+                <tbody>
+                <tr th:if="${employee_details_result == null}">
+                    <td colspan="2"> No Employees Found</td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td th:text="${employee_details_result.firstName}"></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td th:text="${employee_details_result.lastName}"></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th>Address</th>
+                    <td th:text="${employee_details_result.address.addressLine}"></td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td th:text="${employee_details_result.address.country}"></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td th:text="${employee_details_result.address.city}"></td>
+                </tr>
+                <tr>
+                    <th>Post Code</th>
+                    <td th:text="${employee_details_result.address.postCode}"></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td th:text="${employee_details_result.contacts[0].value}"></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th>IBAN</th>
+                    <td th:text="${employee_details_result.paymentInfo.iban}"></td>
+                </tr>
+                <tr>
+                    <th>Salary</th>
+                    <td th:text="${employee_details_result.paymentInfo.salary}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a class="btn btn-primary" href="/employee/create" role="button">Create New</a>
+            <a class="btn btn-secondary" href="/employee/list" role="button">List All</a>
+
+        </div>
+    </div>
+
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
