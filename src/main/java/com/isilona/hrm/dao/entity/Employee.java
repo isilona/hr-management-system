@@ -36,7 +36,6 @@ public class Employee extends AbstractBaseEntity {
     private Set<Contact> contacts;
 
     @OneToOne(
-            mappedBy = "employee",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY
@@ -46,11 +45,6 @@ public class Employee extends AbstractBaseEntity {
     public void setAddress(Address address) {
         address.setEmployee(this);
         this.address = address;
-    }
-
-    public void setPaymentInfo(PaymentInfo paymentInfo) {
-        paymentInfo.setEmployee(this);
-        this.paymentInfo = paymentInfo;
     }
 
 }

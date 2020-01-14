@@ -1,12 +1,11 @@
 package com.isilona.hrm.dto;
 
-import com.isilona.hrm.dao.entity.Contact;
-import com.isilona.hrm.dao.entity.PaymentInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -21,9 +20,9 @@ public class EmployeeDto extends BaseDto {
     private AddressDto address;
 
     @Valid
-    private Contact contact;
+    private List<ContactDto> contacts;
 
     @Valid
-    private PaymentInfo paymentInfo;
+    private PaymentInfoDto paymentInfo;
 
 }

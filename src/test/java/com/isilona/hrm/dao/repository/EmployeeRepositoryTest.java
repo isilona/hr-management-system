@@ -262,12 +262,12 @@ class EmployeeRepositoryTest {
 
         // when
         Exception exception = assertThrows(
-                TransactionSystemException.class,
+                ConstraintViolationException.class,
                 () -> repository.save(testEmployee));
 
         // then
-        assertTrue(exception.getCause().getCause().getMessage().contains("Validation failed"));
-        assertTrue(exception.getCause().getCause().getMessage().contains("propertyPath=iban"));
+        assertTrue(exception.getMessage().contains("Validation failed"));
+        assertTrue(exception.getMessage().contains("propertyPath=iban"));
     }
 
     @Test
@@ -279,12 +279,12 @@ class EmployeeRepositoryTest {
 
         // when
         Exception exception = assertThrows(
-                TransactionSystemException.class,
+                ConstraintViolationException.class,
                 () -> repository.save(testEmployee));
 
         // then
-        assertTrue(exception.getCause().getCause().getMessage().contains("Validation failed"));
-        assertTrue(exception.getCause().getCause().getMessage().contains("propertyPath=salary"));
+        assertTrue(exception.getMessage().contains("Validation failed"));
+        assertTrue(exception.getMessage().contains("propertyPath=salary"));
     }
 
 }

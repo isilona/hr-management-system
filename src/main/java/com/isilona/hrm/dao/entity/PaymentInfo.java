@@ -3,7 +3,8 @@ package com.isilona.hrm.dao.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -19,9 +20,4 @@ public class PaymentInfo extends AbstractBaseEntity {
     @NotNull
     @Column(nullable = false)
     private BigDecimal salary;
-
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private Employee employee;
 }
