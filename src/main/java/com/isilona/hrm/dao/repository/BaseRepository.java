@@ -11,6 +11,7 @@ import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.querydsl.binding.SingleValueBinding;
 import org.springframework.data.repository.NoRepositoryBean;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,6 +20,8 @@ public interface BaseRepository<E extends AbstractBaseEntity, Q extends EntityPa
     Optional<E> findByUuid(UUID uuid);
 
     Long deleteByUuid(UUID uuid);
+
+    Long deleteByUuidIn(List<UUID> ids);
 
     default void customize(final QuerydslBindings bindings, final Q root) {
         bindings.bind(String.class).first((SingleValueBinding<StringPath, String>) StringExpression::eq);

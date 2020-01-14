@@ -61,6 +61,15 @@ public abstract class AbstractBaseService<R extends BaseRepository<E, Q>, M exte
         return deletedRows;
     }
 
+    @Transactional
+    public Long deleteBatch(List<UUID> uuidList) {
+        Long deletedRows = repository.deleteByUuidIn(uuidList);
+        if (deletedRows == 0) {
+            throw new ResourceNotFoundException(uuidList);
+        }
+        return deletedRows;
+    }
+
     public List<D> findFiltered(Predicate predicate, Sort sort) {
         final BooleanBuilder builder = new BooleanBuilder();
 

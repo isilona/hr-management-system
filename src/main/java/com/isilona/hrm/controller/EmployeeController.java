@@ -13,6 +13,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -95,6 +96,19 @@ public class EmployeeController {
                     .notFound().build();
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteBatch(@RequestBody List<UUID> deleteIdList) {
+        try {
+            service.deleteBatch(deleteIdList);
+            return ResponseEntity
+                    .noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity
+                    .notFound().build();
+        }
+    }
+
 
     @GetMapping("/filter")
     public ResponseEntity findFiltered(@QuerydslPredicate(root = Employee.class) Predicate predicate, Sort sort) {

@@ -1,10 +1,15 @@
 package com.isilona.hrm.exception;
 
+import java.util.List;
 import java.util.UUID;
 
 public class ResourceNotFoundException extends BaseException {
     public ResourceNotFoundException(UUID resourceUuid) {
         super(String.format("Resource with id %s was not found", resourceUuid));
+    }
+
+    public ResourceNotFoundException(List<UUID> resourceUuidList) {
+        super(String.format("No resource with id in %s list was not found", resourceUuidList));
     }
 
     public ResourceNotFoundException(Class resourceType, UUID resourceUuid) {
